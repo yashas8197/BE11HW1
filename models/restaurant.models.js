@@ -6,7 +6,7 @@ const restaurantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    cuisines: {
+    cuisine: {
       type: [String],
       enum: [
         "Italian",
@@ -27,34 +27,39 @@ const restaurantSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    owner: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
-    owner: {
-      type: String,
-      required: true,
-    },
-    phone: {
+    rating: {
       type: Number,
+      required: true,
+      default: 0,
+      min: 0,
+      max: 5,
+    },
+    phoneNumber: {
+      type: String,
     },
     website: {
       type: String,
     },
-    openingYear: {
-      type: Number,
+    openHours: {
+      type: String,
     },
-    rating: {
-      type: Number,
+    priceRange: {
+      type: String,
+      enum: ["$ (0-10)", "$$ (11-30)", "$$$ (31-60)", "$$$$ (61+)", "Other"],
     },
-    specialDishes: {
-      type: [String],
+    reservationsNeeded: {
+      type: Boolean,
+      default: false,
     },
-    photoUrls: {
+    isDeliveryAvailable: {
+      type: Boolean,
+      default: false,
+    },
+    menuUrl: {
+      type: String,
+      required: true,
+    },
+    photos: {
       type: [String],
     },
   },
