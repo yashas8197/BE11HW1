@@ -33,7 +33,7 @@ async function createData(newRestaurant) {
   }
 }
 
-createData(newRestaurant);
+// createData(newRestaurant);
 
 async function readAllrestaurants() {
   try {
@@ -106,4 +106,45 @@ async function readReWithItalian(cuisine) {
   }
 }
 
-readReWithItalian("Italian");
+// readReWithItalian("Italian");
+
+async function updateRestaurantObj(resId, dataToUpdate) {
+  try {
+    const updateRes = await Restaurants.findByIdAndUpdate(resId, dataToUpdate, {
+      new: true,
+    });
+    console.log(updateRes);
+  } catch (error) {
+    throw error;
+  }
+}
+
+// updateRestaurantObj("661e715476d57236bb7a6df4", { rating: 4.1 });
+
+async function ResUpdateByName(resName, dataToUpdate) {
+  try {
+    const updateResName = await Restaurants.findOneAndUpdate(
+      { name: resName },
+      dataToUpdate,
+      { new: true },
+    );
+    console.log(updateResName);
+  } catch (error) {
+    throw error;
+  }
+}
+// ResUpdateByName("Somi", { name: "Som Sarovar" });
+
+async function updateByResPhoneNumber(resPhoneNumber, dataToUpdate) {
+  try {
+    const updateResData = await Restaurants.findOneAndUpdate(
+      { phoneNumber: resPhoneNumber },
+      dataToUpdate,
+      { new: true },
+    );
+    console.log(updateResData);
+  } catch (error) {
+    throw error;
+  }
+}
+updateByResPhoneNumber("+1288997392", { isDeliveryAvailable: true });
