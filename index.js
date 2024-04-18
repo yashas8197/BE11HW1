@@ -147,4 +147,26 @@ async function updateByResPhoneNumber(resPhoneNumber, dataToUpdate) {
     throw error;
   }
 }
-updateByResPhoneNumber("+1288997392", { isDeliveryAvailable: true });
+// updateByResPhoneNumber("+1288997392", { isDeliveryAvailable: true });
+
+async function deleteRestaurantById(restaurantId) {
+  try {
+    const deleteById = await Restaurants.findByIdAndDelete(restaurantId);
+  } catch (error) {
+    throw error;
+  }
+}
+
+deleteRestaurantById("661d2e282241225f89ac1670");
+
+async function deleteRestaurantByName(restaurantName) {
+  try {
+    const deleteByName = await Restaurants.findOneAndDelete({
+      name: restaurantName,
+    });
+  } catch (error) {
+    throw error;
+  }
+}
+
+deleteRestaurantByName("Yo China");
